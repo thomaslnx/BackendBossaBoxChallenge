@@ -16,7 +16,10 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
-Route.get('/api', 'SwaggerTestController.hello')
+Route.resource('users', 'UserController')
+
+// Route.post('users', 'UserController.store')
+// Route.get('users', 'UserController.index')
+// Route.delete('users:id', 'UserController.delete')
+
+Route.post('sessions', 'SessionController.store')

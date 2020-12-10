@@ -15,8 +15,13 @@ module.exports = {
   options: {
     swaggerDefinition: {
       info: {
-        title: 'Adonis 💘 Swagger',
-        version: '1.0.0'
+        // title: 'Adonis 💘 Swagger',
+        title: 'Backend Documentation for backend Bossabox Challenge',
+        version: '1.0.0',
+        description: 'Backend documentation using Swagger',
+        contact: {
+          email: 'marcos.msilva10@gmail.com'
+        }
       },
 
       basePath: '/',
@@ -41,6 +46,140 @@ module.exports = {
             admin: 'Grants read and write access to administrative information (this is just sample)'
           }
         }
+      },
+      paths: {
+        '/users': {
+          post: {
+            summary: 'Create a User',
+            tags: [
+              'user'
+            ],
+            operationId: 'createUser',
+            description: 'Name of the user',
+            parameters: [
+              {
+                name: 'body',
+                in: 'body',
+                description: 'Create a user with body data',
+                required: true,
+                schema: {
+                  properties: {
+                    username: {
+                      type: 'string',
+                      example: 'user'
+                    },
+                    email: {
+                      type: 'string',
+                      example: 'user@example.com'
+                    },
+                    password: {
+                      type: 'string',
+                      example: '123123123'
+                    }
+                  }
+                }
+              }
+            ],
+            produces: [
+              'application/json'
+            ],
+            responses: {
+              201: {
+                description: 'User created successfuly',
+                schema: {
+                  properties: {
+                    id: {
+                      type: 'integer',
+                      example: 6
+                    },
+                    username: {
+                      type: 'string',
+                      example: 'marcos'
+                    },
+                    email: {
+                      type: 'string',
+                      example: 'marcos@example.com'
+                    }
+                  }
+                }
+              },
+              400: {
+                description: 'User already exist',
+                schema: {
+                  properties: {
+                    error: {
+                      type: 'string'
+                    }
+                  }
+                }
+              }
+            }
+          },
+          get: {
+            summary: 'List a User',
+            tags: [
+              'user'
+            ],
+            operationId: 'ListAllUsers',
+            consumes: [
+              'application/json'
+            ],
+            produces: [
+              'application/json'
+            ],
+            responses: {
+              200: {
+                description: 'Ok',
+                schema: {
+                  properties: {
+                    id: {
+                      type: 'integer',
+                      example: 5
+                    },
+                    name: {
+                      type: 'string',
+                      example: 'marcos'
+                    },
+                    email: {
+                      type: 'string',
+                      example: 'marcos@example.com'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        '/users/{id}': {
+          delete: {
+            tags: [
+              'user'
+            ],
+            summary: 'Delete a user from database',
+            operationId: 'DeleteUser',
+            parameters: [
+              {
+                name: 'id',
+                in: 'path',
+                description: 'Delete a user from a database',
+                schema: {
+                  properties: {
+                    id: {
+                      type: 'integer',
+                      example: 6
+                    }
+                  }
+                }
+              }
+            ],
+            responses: {
+              204: {
+                description: 'User was delete successfuly'
+              }
+            }
+          }
+        }
+
       }
     },
 
