@@ -25,6 +25,16 @@ module.exports = {
       },
 
       basePath: '/',
+      tags: [
+        {
+          name: 'tools',
+          description: 'CRUD operations for tools'
+        },
+        {
+          name: 'users',
+          description: 'CRUD operations for users'
+        }
+      ],
 
       // Example security definitions.
       securityDefinitions: {
@@ -52,7 +62,7 @@ module.exports = {
           post: {
             summary: 'Create a User',
             tags: [
-              'user'
+              'users'
             ],
             operationId: 'createUser',
             description: 'Name of the user',
@@ -118,7 +128,7 @@ module.exports = {
           get: {
             summary: 'List all Users',
             tags: [
-              'user'
+              'users'
             ],
             operationId: 'ListAllUsers',
             consumes: [
@@ -153,7 +163,7 @@ module.exports = {
         '/users/{id}': {
           delete: {
             tags: [
-              'user'
+              'users'
             ],
             summary: 'Delete a user from database based on his id',
             operationId: 'DeleteUser',
@@ -180,7 +190,7 @@ module.exports = {
           },
           put: {
             tags: [
-              'user'
+              'users'
             ],
             summary: 'Update a user from database based on his id',
             operationId: 'UpdateUser',
@@ -242,8 +252,35 @@ module.exports = {
               }
             }
           }
+        },
+        '/tools': {
+          get: {
+            summary: 'List All Tools',
+            tags: [
+              'tools'
+            ]
+          },
+          post: {
+            summary: 'Create a Tool',
+            tags: [
+              'tools'
+            ]
+          }
+        },
+        '/tools/{id}': {
+          put: {
+            summary: 'Update a Tool based on his id',
+            tags: [
+              'tools'
+            ]
+          },
+          delete: {
+            summary: 'Delete a Tool based on his id',
+            tags: [
+              'tools'
+            ]
+          }
         }
-
       }
     },
 

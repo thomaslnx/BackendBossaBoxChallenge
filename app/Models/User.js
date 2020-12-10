@@ -23,7 +23,7 @@ class User extends Model {
 
   // Method to not show password field on user created result
   static get hidden () {
-    return ['password']
+    return ['password', 'created_at', 'updated_at']
   }
 
   /**

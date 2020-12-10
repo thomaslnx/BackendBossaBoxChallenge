@@ -18,8 +18,6 @@ const Route = use('Route')
 
 Route.resource('users', 'UserController')
 
-// Route.post('users', 'UserController.store')
-// Route.get('users', 'UserController.index')
-// Route.delete('users:id', 'UserController.delete')
+Route.resource('tools', 'ToolController')
 
 Route.post('sessions', 'SessionController.store')
