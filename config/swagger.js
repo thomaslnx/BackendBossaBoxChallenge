@@ -116,7 +116,7 @@ module.exports = {
             }
           },
           get: {
-            summary: 'List a User',
+            summary: 'List all Users',
             tags: [
               'user'
             ],
@@ -155,7 +155,7 @@ module.exports = {
             tags: [
               'user'
             ],
-            summary: 'Delete a user from database',
+            summary: 'Delete a user from database based on his id',
             operationId: 'DeleteUser',
             parameters: [
               {
@@ -175,6 +175,70 @@ module.exports = {
             responses: {
               204: {
                 description: 'User was delete successfuly'
+              }
+            }
+          },
+          put: {
+            tags: [
+              'user'
+            ],
+            summary: 'Update a user from database based on his id',
+            operationId: 'UpdateUser',
+            consumes: [
+              'application/json'
+            ],
+            produces: [
+              'application/json'
+            ],
+            parameters: [
+              {
+                in: 'path',
+                name: 'id',
+                description: 'Id to update a user',
+                required: true
+              },
+              {
+                in: 'body',
+                name: 'request body',
+                description: 'Users data to update',
+                required: false,
+                schema: {
+                  properties: {
+                    username: {
+                      type: 'string',
+                      example: 'marcos'
+                    },
+                    email: {
+                      type: 'string',
+                      example: 'marcos@example.com'
+                    },
+                    password: {
+                      type: 'string',
+                      example: '123123123'
+                    }
+                  }
+                }
+              }
+            ],
+            responses: {
+              200: {
+                description: 'User updated successfuly',
+                schema: {
+                  properties: {
+                    id: {
+                      type: 'integer',
+                      example: 1
+                    },
+                    name: {
+                      type: 'string',
+                      example: 'luisa'
+                    },
+                    email: {
+                      type: 'string',
+                      example: 'marcos@example.com'
+                    }
+                  }
+                }
               }
             }
           }
